@@ -1,64 +1,83 @@
 # Customer Loan Acceptance Prediction
 
-**Group coursework | Predictive analytics portfolio project | R**
+**R | Supervised Machine Learning | Collaborative Academic Project**
 
-## Project overview
-This project compares five supervised-learning approaches to predict whether a customer accepts a personal loan offer. It uses the Universal Bank dataset and explores how customer demographics, financial attributes, and account relationships inform loan-campaign targeting.
+## Business Problem
 
-> **Collaboration note:** This analysis originated as a group class project. The portfolio owner should describe their individual contributions accurately and acknowledge collaborators. Do not interpret this repository as claiming sole authorship of the original coursework.
+Can customer demographic information and banking behavior help predict which customers are most likely to accept a personal loan offer?
 
-## Business question
-Can a bank identify customers who are more likely to accept a personal loan offer, so that marketing teams can prioritize outreach?
+This project evaluates five supervised machine-learning algorithms to identify potential loan customers and support more targeted banking marketing strategies.
 
-## Data summary
-- **Observations:** 5,000 customers
-- **Original columns:** 14
-- **Target:** `Personal.Loan` (1 = accepted, 0 = did not accept)
-- **Observed acceptances:** 480 (9.6%); non-acceptances: 4,520 (90.4%)
-- **Missing cells:** 0
-- **Data quality note:** `Experience` contains 52 negative values in the supplied dataset. The original modeling approach leaves them unchanged; this limitation should be investigated in a revised analysis.
-- The identifiers `ID` and `ZIP.Code` are excluded from the model inputs.
+## Dataset
 
-## Methods
-The script treats `Education`, `Family`, `Personal.Loan`, `Securities.Account`, `CD.Account`, `Online`, and `CreditCard` as factors. It creates a stratified 80% training / 20% holdout split using `caret::createDataPartition` with seed `1948`.
+The Universal Bank dataset contains:
+- **5,000 customer records**
+- **14 original variables**
+- **480 customers (9.6%)** who accepted a personal loan offer
 
-| Model | R `caret` method | Tuning / validation |
-| --- | --- | --- |
-| k-Nearest Neighbors | `knn` | 10-fold CV, Kappa; centering/scaling; 10 tuning candidates |
-| Naive Bayes | `naive_bayes` | 10-fold CV, Kappa; Laplace, kernel, and bandwidth adjustment grid |
-| C5.0 Decision Trees | `C5.0` | 10-fold CV; rules/tree, winnowing, and trials grid; default accuracy metric |
-| Artificial Neural Network | `nnet` | 5-fold CV, Kappa; network size and weight decay grid; centering/scaling |
-| Radial Support Vector Machine | `svmRadial` | 10-fold CV; C/sigma grid; centering/scaling; default accuracy metric |
+The target variable is `Personal.Loan`. Customer IDs and ZIP codes were excluded from modeling.
 
-The code evaluates each tuned model against the holdout test set using a confusion matrix with `1` (loan accepted) designated as the positive class.
+## Machine Learning Models
 
-## How to run
-1. Install [R](https://cran.r-project.org/) and [RStudio](https://posit.co/download/rstudio-desktop/) if needed.
-2. Download or clone this repository and open its folder in RStudio.
-3. Install the packages used by the script (only necessary once):
+Five classification algorithms were developed and compared:
 
-   ```r
-   install.packages(c("caret", "naivebayes", "class", "C50", "NeuralNetTools", "fastDummies", "nnet", "kernlab"))
-   ```
+1. k-Nearest Neighbors (kNN)
+2. Naive Bayes
+3. C5.0 Decision Tree
+4. Artificial Neural Network (ANN)
+5. Support Vector Machine (SVM)
 
-4. Set the working directory to the folder containing `UniversalBank.csv` and run `Customer_Loan_Acceptance_Prediction.R`.
-5. View model tuning summaries, plots (where generated), and confusion matrices in RStudio.
+## Methodology
 
-## Project files
-- `Customer_Loan_Acceptance_Prediction.R` — data preparation, model training and evaluation.
-- `UniversalBank.csv` — project dataset; confirm permission to redistribute this copy before making the repository public.
-- `README.md` — project overview and reproduction steps.
+- Data preparation and categorical variable conversion
+- Stratified 80/20 training and testing split
+- Cross-validation and hyperparameter tuning
+- Model evaluation using Accuracy, Kappa, Precision, Recall, and F1 Score
 
-## Results and interpretation
-**Model performance has not yet been reproduced or independently verified.** Run the script in RStudio and use its printed confusion matrices to report accuracy, sensitivity (recall for acceptance), specificity, precision, and Kappa. No model is described as the winner until measured results are available.
+## Model Performance
 
-Because only 9.6% of cases are positive, a classifier that predicts every customer will reject the offer would already be 90.4% accurate. Pay particular attention to identifying actual acceptances and the business trade-off between missed offers and unnecessary outreach.
+| Model | Accuracy | Kappa | F1 Score |
+|---|---:|---:|---:|
+| **Decision Tree** | **98.6%** | **0.918** | **92.55%** |
+| Neural Network | 98.1% | 0.881 | 89.14% |
+| SVM | 97.5% | 0.840 | 85.38% |
+| kNN | 94.7% | 0.614 | 63.95% |
+| Naive Bayes | 86.3% | 0.342 | 41.70% |
 
-## Potential improvements
-- Check and resolve negative `Experience` values with a documented rule.
-- Compare precision, recall, F1 and ROC-AUC on the holdout set.
-- Consider business-sensitive thresholds and campaign economics.
-- Record R and package versions for stronger reproducibility.
+## Key Findings
 
-## Skills demonstrated
-R · Predictive Modeling · Data Preparation · Cross-Validation · Model Tuning · Classification · Confusion Matrices · Business Analytics
+The **C5.0 Decision Tree** achieved the strongest overall performance among the five evaluated models.
+
+- Test accuracy: **98.6%**
+- Recall: **90.63%**
+- F1 Score: **92.55%**
+- Kappa: **0.918**
+
+The Neural Network achieved higher precision, but the Decision Tree demonstrated a better overall balance of classification metrics.
+
+These findings suggest that predictive modeling could help banks prioritize customers for personal loan marketing campaigns. The results are based on an offline academic analysis, not a deployed model.
+
+## Project Files
+
+- [R Modeling Code](Customer_Loan_Acceptance_Prediction.R)
+- [Model Results](RESULTS.md)
+- [Performance Comparison CSV](model_comparison_results.csv)
+- [Universal Bank Dataset](UniversalBank.csv)
+
+## Tools and Technologies
+
+**Language:** R
+
+**Environment:** RStudio
+
+**Libraries:** caret, naivebayes, C50, nnet, kernlab
+
+**Techniques:** Predictive Modeling, Classification, Cross-Validation, Hyperparameter Tuning, Model Evaluation
+
+## Limitations
+
+The dataset contains 52 negative experience values retained from the original coursework. Loan acceptance is relatively uncommon, making class imbalance an important consideration. Additional validation would be necessary before operational deployment.
+
+## Project Attribution
+
+This project originated from collaborative academic coursework. The repository presents the shared analytical work and its reproducible modeling workflow.

@@ -29,7 +29,7 @@ Developed and compared five supervised learning models to predict customer accep
 [View Project](01_Customer_Loan_Prediction)
 
 ## Upcoming Projects
-- Airline Customer Segmentation
+
 - Price Elasticity Modeling
 - Discrete Choice Modeling
 - Text Analytics & Classification
@@ -37,3 +37,16 @@ Developed and compared five supervised learning models to predict customer accep
 ## About This Portfolio
 
 Projects originated from collaborative academic coursework. The repository documents analytical methods, code, and findings for professional portfolio purposes.
+
+
+### 02. Airline Customer Segmentation
+
+**Tools:** R, K-Means Clustering, Customer Analytics, Data Visualization
+
+Analyzed 3,999 airline loyalty customers using K-Means clustering to identify six customer segments based on travel activity, mileage balances, and reward behavior.
+
+- Evaluated 2–7 clusters using silhouette analysis, selecting a six-cluster solution with a silhouette score of 0.2565.
+- Developed customer profiles and identified potential opportunities for targeted marketing, loyalty engagement, and retention strategies.
+- Created visualizations of customer segment distribution, cluster evaluation, and principal component analysis (PCA).
+
+[View Project](02_Airline_Customer_Segmentation)

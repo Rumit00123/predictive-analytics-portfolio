@@ -28,16 +28,6 @@ Developed and compared five supervised learning models to predict customer accep
 
 [View Project](01_Customer_Loan_Prediction)
 
-## Upcoming Projects
-
-- Price Elasticity Modeling
-- Discrete Choice Modeling
-- Text Analytics & Classification
-
-## About This Portfolio
-
-Projects originated from collaborative academic coursework. The repository documents analytical methods, code, and findings for professional portfolio purposes.
-
 
 ### 02. Airline Customer Segmentation
 
@@ -50,3 +40,36 @@ Analyzed 3,999 airline loyalty customers using K-Means clustering to identify si
 - Created visualizations of customer segment distribution, cluster evaluation, and principal component analysis (PCA).
 
 [View Project](02_Airline_Customer_Segmentation)
+
+
+### 03. Text Analytics & Document Classification
+
+**Tools:** R, NLP, TF-IDF, Naive Bayes, Support Vector Machine (SVM)
+
+Analyzed 4,143 advertising text records using Natural Language Processing and supervised machine learning to classify documents.
+
+- Applied text preprocessing, stemming, stopword removal, and TF-IDF feature engineering.
+- Compared Naive Bayes and SVM classifiers using an 80/20 train-test split and cross-validation.
+- Achieved 82.61% accuracy and 84.11% F1 Score with Naive Bayes, the best-performing model in this analysis.
+- Explored potential applications in automated document classification and content review.
+
+**Note:** Results are preliminary because TF-IDF feature engineering was performed before the train-test split.
+
+[View Project](03_Text_Analytics_Classification)
+
+
+
+
+## About This Portfolio
+
+### Project 1: Customer Loan Acceptance Prediction
+
+**Objective:** To develop and evaluate machine learning models using R to predict customer loan acceptance based on demographic and banking data, supporting data-driven customer targeting and marketing decisions.
+
+### Project 2: Airline Customer Segmentation
+
+**Objective:** To analyze airline loyalty customer behavior using K-Means clustering in R, identify distinct customer segments, and explore opportunities to improve targeted marketing, customer engagement, and retention strategies.
+
+### Project 3: Text Analytics & Document Classification
+
+**Objective:** To apply Natural Language Processing (NLP) and machine learning techniques in R to classify advertising text, compare Naive Bayes and SVM model performance, and explore opportunities for automated content classification.
